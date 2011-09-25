@@ -15,12 +15,7 @@ then
     exit 1
 fi
 
-#ls -la /usr/bin/gcc
-mv /usr/bin/gcc /tmp/$$.gcc
-ln -s /usr/bin/gcc-$KERNELGCCVERSION /usr/bin/gcc
-#ls -la /usr/bin/gcc
 /etc/init.d/gdm stop
-$NVIDIAINSTALLER
+echo 'Installing '$NVIDIAINSTALLER
+env CC=/usr/bin/gcc-$KERNELGCCVERSION $NVIDIAINSTALLER
 /etc/init.d/gdm start
-#ls -la /usr/bin/gcc
-mv /tmp/$$.gcc /usr/bin/gcc
